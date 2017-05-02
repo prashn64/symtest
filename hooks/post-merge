@@ -1,0 +1,4 @@
+#!/bin/sh
+# set up symlinks to lib folders if they don't exist, on each git pull
+
+echo 'Hello World'
