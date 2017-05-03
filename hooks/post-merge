@@ -1,8 +1,16 @@
 #!/bin/sh
 # set up symlinks to lib folders if they don't exist, on each git pull
 
+GIT_ROOT="$(git rev-parse --show-toplevel)"
+
 if [ "$OSTYPE" == "msys" ] || [ "$OSTYPE" == "win32" ] ; then
+  if [ -d "App/Libs" ]; then
+    echo 'will set up a symlink on windows eventually'
+  fi
   echo 'Hello Windows';
 else
+  if [ ! -L "$GIT_ROOT/App/Lib" ]; then
+    ln -s $GIT_ROOT/Lib $GIT_ROOT/App/Lib
+  fi
   echo 'Hello Unix';
 fi
